@@ -1,0 +1,38 @@
+[
+  {
+    "name": "system",
+    "type": "folder",
+    "children": [
+      {
+        "name": "bin",
+        "type": "folder",
+        "children": []
+      },
+      {
+        "name": "lib",
+        "type": "folder",
+        "children": []
+      },
+      {
+        "name": "etc",
+        "type": "folder",
+        "children": []
+      },
+      {
+        "name": "app",
+        "type": "folder",
+        "children": []
+      },
+      {
+        "name": "host",
+        "type": "folder",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "users",
+    "type": "folder",
+    "children": []
+  }
+]
