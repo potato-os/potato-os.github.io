@@ -5,7 +5,7 @@
     "Created PotatoOS"
   ],
   "files": {
-    "/placeholder.txt":  {
+    "/data/placeholder.txt":  {
       "url": "http://potato-os.github.io/v0.0.0/files/placeholder.txt",
       "hash": "sha256:c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31"
     }
