@@ -19,11 +19,11 @@
 },
 "/system/assets/restore.svg": {
 "url": "http://potato-os.github.io/v0.0.0/files/assets/restore.svg",
-"hash": "64c72ca38945c535aa1889af4f0b1024af6881c5e6f6523a5387e633f22745ea"
+"hash": "sha256:64c72ca38945c535aa1889af4f0b1024af6881c5e6f6523a5387e633f22745ea"
 },
 "/system/assets/icon.svg": {
 "url": "http://potato-os.github.io/v0.0.0/files/assets/logo.svg",
-"hash": "bc130b0e212588a1b322b83f672dc0d9ff406652d021a3c9945620269a5b11ec"
+"hash": "sha256:bc130b0e212588a1b322b83f672dc0d9ff406652d021a3c9945620269a5b11ec"
 }
   }
 }
