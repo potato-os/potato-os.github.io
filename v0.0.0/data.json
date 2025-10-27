@@ -24,6 +24,22 @@
     "/system/assets/icon.svg": {
       "url": "http://potato-os.github.io/v0.0.0/files/assets/logo.svg",
       "hash": "sha256:bc130b0e212588a1b322b83f672dc0d9ff406652d021a3c9945620269a5b11ec"
+    },
+    "/system/lib/modules": {
+      "url": "http://potato-os.github.io/v0.0.0/files/lib/modules.txt",
+      "hash": "sha256:i need to hash this"
+    },
+    "/system/lib/gui.gd": {
+      "url": "http://potato-os.github.io/v0.0.0/files/lib/gui.gd",
+      "hash": "sha256:i need to hash this"
+    },
+    "/system/bin/startup.starch": {
+      "url": "http://potato-os.github.io/v0.0.0/files/bin/startup.starch",
+      "hash": "sha256:i need to hash this"
+    },
+    "/system/host/KeyboardHook.exe": {
+      "url": "http://potato-os.github.io/v0.0.0/files/host/KeyboardHook.exe",
+      "hash": "sha256:i need to hash this"
     }
   }
 }
