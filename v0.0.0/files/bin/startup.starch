@@ -1,5 +1,9 @@
+print("Importing...");
 using gui;
 
+print("Windowing...");
 var window = gui.Window();
+print("Texting...");
 var text = gui.Text("Hello from STARCH!");
+print("Contenting...");
 window.add_content(text);
