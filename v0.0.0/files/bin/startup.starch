@@ -1,6 +1,5 @@
-print("Importing...");
 using gui;
-
+print("Importing...");
 print("Windowing...");
 var window = gui.Window();
 print("Texting...");
