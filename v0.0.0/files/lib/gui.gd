@@ -7,7 +7,7 @@ func _init():
 func create_window(position: Vector2 = Vector2.ZERO, size: Vector2 = Vector2(500, 500)):
 	var window := OSWindow.new()
 	WindowManager.get_root().add_child(window)
-	return OSWindow.new()
+	return window
 
 func create_label(content):
 	var label := Label.new()
