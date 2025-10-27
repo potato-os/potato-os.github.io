@@ -1,5 +1,1 @@
 using gui;
-
-var window = gui.Window();
-var text = gui.Text("Hello from STARCH!");
-window.add_content(text);

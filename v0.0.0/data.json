@@ -1,45 +1,39 @@
 {
-  "version": "v0.0.0",
-  "released": "2025-10-10T10:35:00Z",
-  "changelog": [
-    "Created PotatoOS"
-  ],
-  "files": {
-    "/system/assets/close.svg":  {
-      "url": "http://potato-os.github.io/v0.0.0/files/assets/close.svg",
-      "hash": "sha256:866f5f9c295ee66b8118a827a40fe3fa65bfe7d48ba46d0ace65aba14c0c371e"
-    },
-    "/system/assets/minimise.svg": {
-      "url": "http://potato-os.github.io/v0.0.0/files/assets/minimise.svg",
-      "hash": "sha256:2f6b0a9ef021329136a6bac21dadddf66a6fba442a0aabc35f5523824b891bca"
-    },
-    "/system/assets/maximise.svg": {
-      "url": "http://potato-os.github.io/v0.0.0/files/assets/maximise.svg",
-      "hash": "sha256:4e6e7c15bf196aa864a0945c89279b9d10248b29c6887e4cc73664049f6ecf84"
-    },
-    "/system/assets/restore.svg": {
-      "url": "http://potato-os.github.io/v0.0.0/files/assets/restore.svg",
-      "hash": "sha256:64c72ca38945c535aa1889af4f0b1024af6881c5e6f6523a5387e633f22745ea"
-    },
-    "/system/assets/icon.svg": {
-      "url": "http://potato-os.github.io/v0.0.0/files/assets/logo.svg",
-      "hash": "sha256:bc130b0e212588a1b322b83f672dc0d9ff406652d021a3c9945620269a5b11ec"
-    },
-    "/system/lib/modules": {
-      "url": "http://potato-os.github.io/v0.0.0/files/lib/modules.txt",
-      "hash": "sha256:i need to hash this"
-    },
-    "/system/lib/gui.gd": {
-      "url": "http://potato-os.github.io/v0.0.0/files/lib/gui.gd",
-      "hash": "sha256:i need to hash this"
-    },
-    "/system/bin/startup.starch": {
-      "url": "http://potato-os.github.io/v0.0.0/files/bin/startup.starch",
-      "hash": "sha256:i need to hash this"
-    },
-    "/system/host/KeyboardHook.exe": {
-      "url": "http://potato-os.github.io/v0.0.0/files/host/KeyboardHook.exe",
-      "hash": "sha256:i need to hash this"
-    }
-  }
+	"version": "v0.0.0",
+	"released": "2025-10-10T10:35:00Z",
+	"changelog": [
+		"Created PotatoOS"
+	],
+	"files": {
+		"/system/assets/close.svg":  {
+			"url": "/files/assets/close.svg"
+		},
+		"/system/assets/minimise.svg": {
+			"url": "/files/assets/minimise.svg"
+		},
+		"/system/assets/maximise.svg": {
+			"url": "/files/assets/maximise.svg"
+		},
+		"/system/assets/restore.svg": {
+			"url": "/files/assets/restore.svg"
+		},
+		"/system/assets/icon.svg": {
+			"url": "/files/assets/logo.svg"
+		},
+		"/system/assets/font.ttf": {
+			"url": "/files/assets/font.ttf"
+		},
+		"/system/lib/gdmodules": {
+			"url": "/files/lib/modules.txt"
+		},
+		"/system/lib/gui.gd": {
+			"url": "/files/lib/gui.gd"
+		},
+		"/system/bin/startup.starch": {
+			"url": "/files/bin/startup.starch"
+		},
+		"/system/host/KeyboardHook.exe": {
+			"url": "/files/host/KeyboardHook.exe"
+		}
+	}
 }

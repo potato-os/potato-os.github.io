@@ -1,4 +1,4 @@
-_methods = []
+var _methods := {}
 
 func _init():
 	_methods["Window"] = create_window
