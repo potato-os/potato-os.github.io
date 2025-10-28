@@ -16,11 +16,8 @@ func create_label(text: String):
 	var label := Label.new()
 	label.text = str(text)
 	label.add_theme_color_override("font_color", Color.BLACK)
+	label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	return label
 
 func add_content(window: OSWindow, child):
-	if window is not OSWindow:
-		return "FUCK YOU"
-	else:
-		window.add_content(child)
-		return "all good man"
+	window.add_content(child)
