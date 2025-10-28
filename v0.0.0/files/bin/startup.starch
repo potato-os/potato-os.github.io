@@ -1,4 +1,9 @@
 using gui;
 var window = gui.Window();
 var text = gui.Text("Hello from STARCH!");
-gui.add_content(window, text);
+var result = gui.add_content(window, text);
+if result == "FUCK YOU" {
+    print(":pensive: it didnt work")
+} else {
+    print("FINALLY I LOVE LIFE")
+}

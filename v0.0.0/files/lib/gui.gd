@@ -19,6 +19,8 @@ func create_label(text: String):
 	return label
 
 func add_content(window: OSWindow, child):
-	print(window)
-	print(child)
-	window.add_content(child)
+	if window is not OSWindow:
+		return "FUCK YOU"
+	else:
+		window.add_content(child)
+		return "all good man"
