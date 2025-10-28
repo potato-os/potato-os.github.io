@@ -3,7 +3,7 @@ var window = gui.Window();
 var text = gui.Text("Hello from STARCH!");
 var result = gui.add_content(window, text);
 if result == "FUCK YOU" {
-    print(":pensive: it didnt work")
+    print(":pensive: it didnt work");
 } else {
-    print("FINALLY I LOVE LIFE")
+    print("FINALLY I LOVE LIFE");
 }
