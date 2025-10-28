@@ -4,7 +4,6 @@ func _init():
 	_methods["Window"] = create_window
 	_methods["Text"] = create_label
 	_methods["add_content"] = add_content
-	_methods["get_thing"] = get_thing
 
 func create_window(position: Vector2 = Vector2.ZERO, size: Vector2 = Vector2(500, 500)):
 	var window := OSWindow.new()
