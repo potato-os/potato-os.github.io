@@ -21,8 +21,4 @@ func create_label(text: String):
 	return label
 
 func add_content(window: OSWindow, child):
-	print(child.get_class())
 	window.add_content(child)
-
-func get_thing(obj):
-	return obj.position

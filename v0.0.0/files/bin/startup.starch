@@ -2,4 +2,3 @@ using gui;
 var window = gui.Window();
 var text = gui.Text("Hello from STARCH!");
 gui.add_content(window, text);
-print(gui.get_thing(text));
