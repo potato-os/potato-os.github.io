@@ -1,8 +1,4 @@
 using gui;
-print("Importing...");
-print("Windowing...");
 var window = gui.Window();
-print("Texting...");
 var text = gui.Text("Hello from STARCH!");
-print("Contenting...");
-window.add_content(text);
+gui.add_content(window, text);
