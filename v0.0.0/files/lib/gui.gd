@@ -15,7 +15,7 @@ class WindowWrapper extends OSWindow:
 		self.size = size
 	
 	func _add_content(child: Node):
-		self.add_child(child)
+		self.add_content(child)
 
 class Widget extends Control:
 	var _methods: Dictionary = {}
@@ -43,5 +43,5 @@ class Widget extends Control:
 class Text extends Widget:
 	var _label: RichTextLabel
 	
-	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); add_child(_label);
+	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; add_child(_label);
 	func text(text: String): _label.text = text; return self;

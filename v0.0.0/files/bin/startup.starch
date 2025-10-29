@@ -1,8 +1,7 @@
 using gui;
 
 var window = gui.Window();
-window
-	~> .add_content(
-		gui.Text()
-			~> .text("Hello from STARCH!")
-	);
+var text = gui.Text();
+#text.fill();
+text.text("Hello from STARCH!");
+window.add_content(text);
