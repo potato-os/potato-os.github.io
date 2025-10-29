@@ -7,7 +7,7 @@ func _init():
 	_classes["Text"] = Text
 
 class WindowWrapper extends OSWindow:
-	_methods = {"add_content": _add_content}
+	var _methods: Dictionary = {"add_content": _add_content}
 	func _init(position: Vector2 = Vector2.ZERO, size: Vector2 = Vector2(500, 500)):
 		super()
 		WindowManager.get_root().add_child(self)
