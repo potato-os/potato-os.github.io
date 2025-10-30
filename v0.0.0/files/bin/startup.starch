@@ -5,10 +5,7 @@ var window = gui.Window();
 window.title("My Custom Window");
 window.add_content(
 	gui.Button()
-		~> .anchor_left(0.25)
-		~> .anchor_right(0.75)
-		~> .anchor_top(0.25)
-		~> .anchor_bottom(0.75)
+		~> .margin_all(50)
 		~> .text("Hello World!")
 		~> .colour(Colour("#66ff00ff"))
 );
