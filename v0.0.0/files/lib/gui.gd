@@ -60,7 +60,7 @@ class ButtonWidget extends Widget:
 	var _button: Button
 	
 	func _init(): super(); _button = Button.new(); _button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER; _button.expand_icon = true; _button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; colour(Color.WHITE); _methods["text"] = text; _methods["image"] = image; _methods["flat"] = flat; _methods["colour"] = colour; _methods["font_size"] = font_size; _methods["font"] = font;
-	func o(name, color): _button.add_theme_color_override(name, color);
+	func o(name, color): color = color if color is Color else color.unwrap(); _button.add_theme_color_override(name, color);
 
 	func text(text: String): _button.text = text; return self;
 	func image(image): image = image if image is Image else image.unwrap(); _button.icon = ImageTexture.create_from_image(image); return self;
