@@ -1,12 +1,6 @@
 using gui;
 using Colour from graphics;
 
-function button_click() {
-	print("Clicked!");
-	button.text("Thanks!");
-	button.colour("#ef2d2dff");
-}
-
 var window = gui.Window();
 window.title("My Custom Window");
 
@@ -17,3 +11,9 @@ button
 	~> .colour(Colour("#66ff00ff"))
 	~> .on_click(button_click);
 window.add_content(button);
+
+function button_click() {
+	print("Clicked!");
+	button.text("Thanks!");
+	button.colour("#ef2d2dff");
+}
