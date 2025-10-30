@@ -1,5 +1,6 @@
 var _methods = {}
 var _classes = {}
+var graphics = load("user://potatofs/lib/graphics.gd")
 
 func _init():
 	_classes["Window"] = WindowWrapper
@@ -53,3 +54,17 @@ class Text extends Widget:
 	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; _label.text = "[font_size=][/font_size]"; add_child(_label);
 	func text(text: String): _label.text = "[font_size=][color=black]%s[/color][/font_size]" % text; return self;
 	func align(horizontally, vertically): _label.horizontal_alignment = horizontally; _label.vertical_alignment = vertically; return self;
+
+class Button extends Widget:
+	var _button: Button
+	
+	func _init(): super(); _button = Button.new(); _button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER; _button.expand_icon = true; _button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; colour(Color.WHITE); _methods["text"] = text; _methods["image"] = image; _methods["flat"] = flat; _methods["colour"] = colour; _methods["font_size"] = font_size; _methods["font"] = font;
+	func o(name, color): _button.add_theme_color_override(name, color);
+
+	func text(text: String): _button.text = text; return self;
+	func image(image: Image): _button.icon = image; return self;
+	func flat(flat: bool): _button.flat = flat; return self;
+	func colour(colour: Color): o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
+	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
+	func font(path: String): _button.add_theme_font_override("font", FontFile.load_dynamic_font("user://potatofs".path_join(name))); return self;
+	

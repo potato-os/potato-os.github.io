@@ -29,6 +29,9 @@
 		"/system/lib/gui.gd": {
 			"url": "/files/lib/gui.gd"
 		},
+		"/system/lib/graphics.gd": {
+			"url": "/files/lib/graphics.gd"
+		},
 		"/system/bin/startup.starch": {
 			"url": "/files/bin/startup.starch"
 		},
