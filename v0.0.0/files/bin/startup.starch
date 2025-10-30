@@ -3,9 +3,14 @@ using Colour from graphics;
 
 var window = gui.Window();
 window.title("My Custom Window");
-window.add_content(
-	gui.Button()
-		~> .margin_all(50)
-		~> .text("Hello World!")
-		~> .colour(Colour("#66ff00ff"))
-);
+var button = gui.Button()
+	~> .margin_all(50)
+	~> .text("Click Me!")
+	~> .colour(Colour("#66ff00ff"))
+	~> .on_click(button_click)
+window.add_content(button);
+
+function button_click() {
+	button.text("Thanks!");
+	button.colour("#ef2d2dff");
+}

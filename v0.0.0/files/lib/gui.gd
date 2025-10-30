@@ -59,7 +59,7 @@ class Text extends Widget:
 class ButtonWidget extends Widget:
 	var _button: Button
 	
-	func _init(): super(); _button = Button.new(); _button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER; _button.expand_icon = true; _button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; colour(Color.WHITE); add_child(_button); _button.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _methods["text"] = text; _methods["image"] = image; _methods["flat"] = flat; _methods["colour"] = colour; _methods["font_size"] = font_size; _methods["font"] = font;
+	func _init(): super(); _button = Button.new(); _button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER; _button.expand_icon = true; _button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; colour(Color.WHITE); add_child(_button); _button.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _methods["text"] = text; _methods["image"] = image; _methods["flat"] = flat; _methods["colour"] = colour; _methods["font_size"] = font_size; _methods["font"] = font; _methods["on_click"] = on_click;
 	func o(name, color): color = color if color is Color else color.unwrap(); _button.add_theme_color_override(name, color);
 
 	func text(text: String): _button.text = text; return self;
@@ -68,4 +68,4 @@ class ButtonWidget extends Widget:
 	func colour(colour): colour = colour if colour is Color else colour.unwrap(); o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
 	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
 	func font(path: String): var font = FontFile.new(); font.load_dynamic_font("user://potatofs".path_join(name)); _button.add_theme_font_override("font", font); return self;
-	
+	func on_click(callback): _button.pressed.connect(callback)
