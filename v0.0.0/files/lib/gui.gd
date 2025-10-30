@@ -63,9 +63,9 @@ class ButtonWidget extends Widget:
 	func o(name, color): _button.add_theme_color_override(name, color);
 
 	func text(text: String): _button.text = text; return self;
-	func image(image): image = image.unwrap() if image is graphics.ImageWrapper else image; _button.icon = ImageTexture.create_from_image(image); return self;
+	func image(image): image = image.unwrap() if image.has_method("unwrap") else image; _button.icon = ImageTexture.create_from_image(image); return self;
 	func flat(flat: bool): _button.flat = flat; return self;
-	func colour(colour): colour = colour.unwrap() if colour is graphics.ColorWrapper else colour; o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
+	func colour(colour): colour = colour.unwrap() if colour.has_method("unwrap") else colour; o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
 	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
 	func font(path: String): var font = FontFile.new(); font.load_dynamic_font("user://potatofs".path_join(name)); _button.add_theme_font_override("font", font); return self;
 	
