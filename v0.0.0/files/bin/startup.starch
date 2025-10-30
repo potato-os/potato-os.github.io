@@ -4,7 +4,8 @@ using Colour from graphics;
 var window = gui.Window();
 window.title("My Custom Window");
 
-var button = gui.Button()
+var button = gui.Button();
+button
 	~> .margin_all(50)
 	~> .text("Click Me!")
 	~> .colour(Colour("#66ff00ff"))
