@@ -1,8 +1,9 @@
 using gui;
 
 var window = gui.Window();
-var text = gui.Text();
-text.fill();
-text.text("[color=red][center]Hello from STARCH![/center][/color]");
-print("ADDING CONTENT (FROM STARCH)");
-window.add_content(text);
+window.add_content(
+    gui.Text()
+        ~> .fill()
+        ~> .text("PotatoOS by [color=red]redis[/color][color=blue]notblue[/color]")
+        ~> .align(1, 1)
+);
