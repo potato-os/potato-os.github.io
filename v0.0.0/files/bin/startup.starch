@@ -3,11 +3,12 @@ using Colour from graphics;
 
 var window = gui.Window();
 window.title("My Custom Window");
+
 var button = gui.Button()
 	~> .margin_all(50)
 	~> .text("Click Me!")
 	~> .colour(Colour("#66ff00ff"))
-	~> .on_click(button_click)
+	~> .on_click(button_click);
 window.add_content(button);
 
 function button_click() {
