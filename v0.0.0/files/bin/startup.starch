@@ -1,4 +1,9 @@
 using Colour from graphics;
+using gui;
 
-print(Colour(1, 0, 0, 0)); // red
-print(Colour("#00ff00")); // green
+var window = gui.Window();
+window.add_content(
+	gui.Button()
+		~> .text("Hello in a BUTTON!")
+		~> .colour(Colour("#7e2222ff"))
+);
