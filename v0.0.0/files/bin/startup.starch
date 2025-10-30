@@ -7,6 +7,5 @@ window.add_content(
 	gui.Button()
 		~> .fill()
 		~> .text("Hello World!")
-		~> .align(1, 1)
 		~> .colour(Colour("#66ff00ff"))
 );
