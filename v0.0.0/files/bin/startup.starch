@@ -3,6 +3,6 @@ using gui;
 var window = gui.Window();
 var text = gui.Text();
 text.fill();
-text.text("Hello from STARCH!");
+text.text("[color=black]Hello from STARCH![/color]");
 print("ADDING CONTENT (FROM STARCH)");
 window.add_content(text);
