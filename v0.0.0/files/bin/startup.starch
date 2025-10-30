@@ -1,4 +1,4 @@
 using Colour from graphics;
 
-print(Colour(1, 0, 0)); // red
-print(Colour.code("#00ff00")); // green
+print(Colour(1, 0, 0, 0)); // red
+print(Colour("#00ff00")); // green
