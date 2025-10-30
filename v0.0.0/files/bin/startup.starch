@@ -15,5 +15,5 @@ window.add_content(button);
 function button_click() {
 	print("Clicked!");
 	button.text("Thanks!");
-	button.colour("#ef2d2dff");
+	button.colour(Colour("#ef2d2dff"));
 }
