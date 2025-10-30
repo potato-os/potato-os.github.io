@@ -2,6 +2,7 @@ using gui;
 using Colour from graphics;
 
 function button_click() {
+	print("Clicked!");
 	button.text("Thanks!");
 	button.colour("#ef2d2dff");
 }
