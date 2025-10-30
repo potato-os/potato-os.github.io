@@ -12,7 +12,6 @@ window.title("My Custom Window");
 var button = gui.Button();
 button
 	~> .fill()
-	~> .margin_all(50)
 	~> .text("Click Me!")
 	~> .colour(Colour("#66ff00ff"))
 	~> .on_click(button_click);
