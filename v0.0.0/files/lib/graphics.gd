@@ -5,7 +5,6 @@ var _classes = {
 
 class ColorWrapper:
 	var _color: Color
-	var _methods = {"code": code}
 
 	func _init(r=null, g=null, b=null, a=null):
 		if r is String:
@@ -20,7 +19,6 @@ class ColorWrapper:
 
 class ImageWrapper:
 	var _image: Image
-	var _methods = {"file": file}
 
 	func _init(path): var base = OS.get_user_data_dir().path_join("potatofs"); var new_path = base.path_join(path).simplify_path(); _image = Image.new().load(new_path) if new_path.begins_with(base) else null
 	func unwrap(): return _image
