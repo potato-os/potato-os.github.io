@@ -2,6 +2,7 @@ using gui;
 
 var window = gui.Window();
 var text = gui.Text();
-#text.fill();
+text.fill();
 text.text("Hello from STARCH!");
+print("ADDING CONTENT (FROM STARCH)");
 window.add_content(text);
