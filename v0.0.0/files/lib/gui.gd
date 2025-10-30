@@ -6,6 +6,7 @@ func _init():
 	_classes["Window"] = WindowWrapper
 	_classes["Widget"] = Widget
 	_classes["Text"] = Text
+	_classes["Button"] = ButtonWidget
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
@@ -55,16 +56,16 @@ class Text extends Widget:
 	func text(text: String): _label.text = "[font_size=][color=black]%s[/color][/font_size]" % text; return self;
 	func align(horizontally, vertically): _label.horizontal_alignment = horizontally; _label.vertical_alignment = vertically; return self;
 
-class Button extends Widget:
+class ButtonWidget extends Widget:
 	var _button: Button
 	
 	func _init(): super(); _button = Button.new(); _button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER; _button.expand_icon = true; _button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; colour(Color.WHITE); _methods["text"] = text; _methods["image"] = image; _methods["flat"] = flat; _methods["colour"] = colour; _methods["font_size"] = font_size; _methods["font"] = font;
 	func o(name, color): _button.add_theme_color_override(name, color);
 
 	func text(text: String): _button.text = text; return self;
-	func image(image: graphics.ImageWrapper): image = image.unwrap(); _button.icon = ImageTexture.create_from_image(image); return self;
+	func image(image): image = image.unwrap(); _button.icon = ImageTexture.create_from_image(image); return self;
 	func flat(flat: bool): _button.flat = flat; return self;
-	func colour(colour: graphics.ColorWrapper): colour = colour.unwrap(); o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
+	func colour(colour): colour = colour.unwrap(); o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
 	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
-	func font(path: String): _button.add_theme_font_override("font", FontFile.load_dynamic_font("user://potatofs".path_join(name))); return self;
+	func font(path: String): _button.add_theme_font_override("font", FontFile.new().load_dynamic_font("user://potatofs".path_join(name))); return self;
 	

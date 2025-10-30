@@ -1,9 +1,11 @@
-using Colour from graphics;
 using gui;
 
 var window = gui.Window();
+window.title("My Custom Window");
 window.add_content(
-	gui.Button()
-		~> .text("Hello in a BUTTON!")
-		~> .colour(Colour("#7e2222ff"))
+	gui.Text()
+		~> .fill()
+		~> .text("[font_size=30]PotatoOS by [color=red]redis[/color][color=blue]notblue[/color][/font_size]")
+		~> .align(1, 1)
 );
+
