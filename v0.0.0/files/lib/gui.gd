@@ -42,7 +42,7 @@ class Widget extends Control:
 	func set_anchor_top(anchor: float): set_anchor(SIDE_TOP, anchor); return self;
 	func set_anchor_bottom(anchor: float): set_anchor(SIDE_BOTTOM, anchor); return self;
 
-	func margin_all(margin: float): set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_left, margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, margin); return self;
+	func margin_all(margin: float): set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_bottom, margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, margin); return self;
 	
 	func add(child: Node): add_child(child); return self
 	func remove(child: Node): remove_child(child); return self
