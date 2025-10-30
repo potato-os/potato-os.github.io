@@ -1,9 +1,10 @@
 using gui;
 
 var window = gui.Window();
+window.title("My Custom Window");
 window.add_content(
-    gui.Text()
-        ~> .fill()
-        ~> .text("PotatoOS by [color=red]redis[/color][color=blue]notblue[/color]")
-        ~> .align(1, 1)
+	gui.Text()
+		~> .fill()
+		~> .text("[font_size=30]PotatoOS by [color=red]redis[/color][color=blue]notblue[/color][/font_size]")
+		~> .align(1, 1)
 );
