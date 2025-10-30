@@ -16,7 +16,7 @@ class WindowWrapper extends OSWindow:
 	
 	func _add_content(child):
 		print("ADDING CONTENT (FROM GUI MODULE)")
-		var real_child = child.unwrap if child is GDScriptInstanceWrapper else child 
+		var real_child = child.unwrap() if child is GDScriptInstanceWrapper else child 
 		self.add_content(child)
 
 class Widget extends Control:
