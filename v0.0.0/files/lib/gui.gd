@@ -45,5 +45,5 @@ class Widget extends Control:
 class Text extends Widget:
 	var _label: RichTextLabel
 	
-	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; add_child(_label);
-	func text(text: String): _label.text = text; return self;
+	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; _label.text = "[font_size=][/font_size]"; add_child(_label);
+	func text(text: String): _label.text = "[font_size=]%s[/font_size]" % text; return self;
