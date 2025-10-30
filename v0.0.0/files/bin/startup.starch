@@ -1,5 +1,5 @@
 using gui;
-using Colour from graphics
+using Colour from graphics;
 
 var window = gui.Window();
 window.title("My Custom Window");
