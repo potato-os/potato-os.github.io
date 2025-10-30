@@ -1,6 +1,6 @@
 var _methods = {}
 var _classes = {}
-var graphics = load("user://potatofs/lib/graphics.gd")
+var graphics = load("user://potatofs/system/lib/graphics.gd")
 
 func _init():
 	_classes["Window"] = WindowWrapper
