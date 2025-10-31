@@ -69,6 +69,4 @@ class ButtonWidget extends Widget:
 	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
 	func font(path: String): var font = FontFile.new(); font.load_dynamic_font("user://potatofs".path_join(name)); _button.add_theme_font_override("font", font); return self;
 	func on_click(callback):
-		_button.pressed.connect(func():
-			callback.call([])
-		)
+		_button.pressed.connect(callback.bind([]))
