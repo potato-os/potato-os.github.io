@@ -10,6 +10,7 @@ button
 	~> .fill()
 	~> .text("Click Me!")
 	~> .font_size(50)
+	~> .margin_all(20)
 	~> .on_click(button_click);
 window.add_content(button);
 
