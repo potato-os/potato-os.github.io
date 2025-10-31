@@ -9,6 +9,7 @@ var button = gui.Button();
 button
 	~> .fill()
 	~> .text("Click Me!")
+	~> .font_size(50)
 	~> .on_click(button_click);
 window.add_content(button);
 
