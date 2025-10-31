@@ -20,7 +20,7 @@ function button_click() {
 
 	if clicked {
 		c = Colour("#00ff00");
-		t = "On"
+		t = "On";
 	}
 	button.colour(c).text(t);
 }
