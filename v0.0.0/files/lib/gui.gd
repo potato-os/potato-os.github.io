@@ -8,7 +8,7 @@ func _init():
 	_classes["Text"] = Text
 	_classes["Button"] = ButtonWidget
 	_classes["Container"] = ContainerWidget
-	#_classes["VBox"] = VBox
+	_classes["FlexBox"] = FlexBox
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
@@ -30,22 +30,24 @@ class WindowWrapper extends OSWindow:
 
 class Widget extends Control:
 	var _methods: Dictionary = {}
+	var _container_parent: bool = false
 	
 	func _init(): _methods["fill"] = fill; _methods["dock"] = dock; _methods["width"] = width; _methods["height"] = height; _methods["get_size"] = size; _methods["get_position"] = position; _methods["anchor_left"] = set_anchor_left; _methods["anchor_right"] = set_anchor_right; _methods["anchor_top"] = set_anchor_top; _methods["anchor_bottom"] = set_anchor_bottom; _methods["margin_all"] = margin_all; _methods["get_parent"] = parent; _methods["delete"] = delete
-	func fill(): set_anchors_preset(Control.PRESET_FULL_RECT); return self;
-	func dock(side: int): set_anchors_preset(Control.PRESET_TOP_WIDE if side == 0 else (Control.PRESET_LEFT_WIDE if side == 1 else (Control.PRESET_BOTTOM_WIDE if side == 2 else Control.PRESET_RIGHT_WIDE))); return self;
+	func fill(): if container_parent: return self; set_anchors_preset(Control.PRESET_FULL_RECT); return self;
+	func dock(side: int): if container_parent: return self; set_anchors_preset(Control.PRESET_TOP_WIDE if side == 0 else (Control.PRESET_LEFT_WIDE if side == 1 else (Control.PRESET_BOTTOM_WIDE if side == 2 else Control.PRESET_RIGHT_WIDE))); return self;
 	func width(width: int): custom_minimum_size.x = width; return self;
 	func height(height: int): custom_minimum_size.y = height; return self;
 	func size(): return self.global_size;
 	func position(): return self.global_position;
 	
-	func set_anchor_left(anchor: float): set_anchor(SIDE_LEFT, anchor); return self;
-	func set_anchor_right(anchor: float): set_anchor(SIDE_RIGHT, anchor); return self;
-	func set_anchor_top(anchor: float): set_anchor(SIDE_TOP, anchor); return self;
-	func set_anchor_bottom(anchor: float): set_anchor(SIDE_BOTTOM, anchor); return self;
+	func set_anchor_left(anchor: float): if container_parent: return self; set_anchor(SIDE_LEFT, anchor); return self;
+	func set_anchor_right(anchor: float): if container_parent: return self; set_anchor(SIDE_RIGHT, anchor); return self;
+	func set_anchor_top(anchor: float): if container_parent: return self; set_anchor(SIDE_TOP, anchor); return self;
+	func set_anchor_bottom(anchor: float): if container_parent: return self; set_anchor(SIDE_BOTTOM, anchor); return self;
 
-	func margin_all(margin: float): set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_bottom, -margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, -margin); return self;
-	
+	func margin_all(margin: float): if container_parent: return self; set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_bottom, -margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, -margin); return self;
+	func expand(expand): if not container_parent: return self; var flag = SIZE_EXPAND_FILL if expand else SIZE_SHRINK_BEGIN; set_h_size_flags(flag); set_v_size_flags(flag); return self;
+
 	func parent(): return get_parent()
 	func delete(): queue_free()
 
@@ -71,9 +73,15 @@ class ButtonWidget extends Widget:
 	func on_click(callback): _button.pressed.connect(callback.bind([]))
 
 class ContainerWidget extends Widget:
-	var _container: Container
+	var _container: Control
 
-	func _init(): super(); _methods["add"] = add; _methods["remove"] = remove;
-
+	func _init(): super(); _container = Control.new(); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["add"] = add; _methods["remove"] = remove;
 	func add(child: Node): _container.add_child(child); return self;
 	func remove(child: Node): _container.remove_child(child); return self;
+
+class FlexBox extends ContainerWidget:
+	func _init(): super(); _container = BoxContainer.new(); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["gap"] = gap;
+	
+	func direction(direction): _container.vertical = direction.upper() == "VERTICAL"; return self;
+	func gap(gap): _hbox.add_theme_constant_override("separation", gap); return self;
+	func align(alignment): var align = alignment.upper(); "this could be lower but shouting is fun"; _container.alignment = BoxContainer.ALIGNMENT_END if alignment == "END" else (BoxContainer.ALIGNMENT_CENTER if alignment == "CENTER" else BoxContainer.ALIGNMENT_BEGIN); return self;
