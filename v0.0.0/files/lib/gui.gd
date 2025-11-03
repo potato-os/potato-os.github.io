@@ -7,6 +7,8 @@ func _init():
 	_classes["Widget"] = Widget
 	_classes["Text"] = Text
 	_classes["Button"] = ButtonWidget
+	_classes["Container"] = ContainerWidget
+	#_classes["VBox"] = VBox
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
@@ -29,7 +31,7 @@ class WindowWrapper extends OSWindow:
 class Widget extends Control:
 	var _methods: Dictionary = {}
 	
-	func _init(): _methods["fill"] = fill; _methods["dock"] = dock; _methods["width"] = width; _methods["height"] = height; _methods["get_size"] = size; _methods["get_position"] = position; _methods["anchor_left"] = set_anchor_left; _methods["anchor_right"] = set_anchor_right; _methods["anchor_top"] = set_anchor_top; _methods["anchor_bottom"] = set_anchor_bottom; _methods["margin_all"] = margin_all; _methods["add"] = add; _methods["remove"] = remove; _methods["get_parent"] = parent; _methods["delete"] = delete
+	func _init(): _methods["fill"] = fill; _methods["dock"] = dock; _methods["width"] = width; _methods["height"] = height; _methods["get_size"] = size; _methods["get_position"] = position; _methods["anchor_left"] = set_anchor_left; _methods["anchor_right"] = set_anchor_right; _methods["anchor_top"] = set_anchor_top; _methods["anchor_bottom"] = set_anchor_bottom; _methods["margin_all"] = margin_all; _methods["get_parent"] = parent; _methods["delete"] = delete
 	func fill(): set_anchors_preset(Control.PRESET_FULL_RECT); return self;
 	func dock(side: int): set_anchors_preset(Control.PRESET_TOP_WIDE if side == 0 else (Control.PRESET_LEFT_WIDE if side == 1 else (Control.PRESET_BOTTOM_WIDE if side == 2 else Control.PRESET_RIGHT_WIDE))); return self;
 	func width(width: int): custom_minimum_size.x = width; return self;
@@ -44,8 +46,6 @@ class Widget extends Control:
 
 	func margin_all(margin: float): set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_bottom, -margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, -margin); return self;
 	
-	func add(child: Node): add_child(child); return self
-	func remove(child: Node): remove_child(child); return self
 	func parent(): return get_parent()
 	func delete(): queue_free()
 
@@ -69,3 +69,11 @@ class ButtonWidget extends Widget:
 	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
 	func font(path: String): var font = FontFile.new(); font.load_dynamic_font("user://potatofs".path_join(name)); _button.add_theme_font_override("font", font); return self;
 	func on_click(callback): _button.pressed.connect(callback.bind([]))
+
+class ContainerWidget extends Widget:
+	var _container: Container
+
+	func _init(): super(); _methods["add"] = add; _methods["remove"] = remove;
+
+	func add(child: Node): _container.add_child(child); return self;
+	func remove(child: Node): _container.remove_child(child); return self;
