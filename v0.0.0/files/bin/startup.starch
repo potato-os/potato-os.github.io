@@ -5,24 +5,14 @@ var clicked = false;
 var window = gui.Window();
 window.title("My Custom Window");
 
-var button = gui.Button();
-button
-	~> .fill()
-	~> .text("Click Me!")
-	~> .font_size(50)
-	~> .margin_all(20)
-	~> .on_click(button_click);
-window.add_content(button);
+var container = gui.FlexBox()
+container
+	~> .direction("vertical")
+	~> .gap(10)
+	~> window.add_content();
 
-function button_click() {
-	clicked = not clicked;
-	print("Clicked!");
-	var c = Colour("#ff0000");
-	var t = "Off";
-
-	if clicked {
-		c = Colour("#00ff00");
-		t = "On";
-	}
-	button.colour(c).text(t);
+for _ in [0..5] {
+	container.add(
+		gui.ColorRect().random()
+	);
 }

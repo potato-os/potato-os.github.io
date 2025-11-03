@@ -76,7 +76,9 @@ class ButtonWidget extends Widget:
 class ColourRect extends Widget:
 	var _rect: ColorRect
 
-	func _init(colour): super(); _rect = ColorRect.new(); _rect.set_anchors_and_offsets_preset(PRESET_FULL_RECT); add_child(_rect); _rect.color = colour if colour is Color else colour.unwrap();
+	func _init(): super(); _rect = ColorRect.new(); _rect.set_anchors_and_offsets_preset(PRESET_FULL_RECT); add_child(_rect); _rect.color = colour if colour is Color else colour.unwrap();
+	func colour(colour): _rect.color = colour if colour is Color else colour.unwrap(); return self;
+	func random(): _rect.color = Color(randf(), randf(), randf())
 
 class ContainerWidget extends Widget:
 	var _container: Control
