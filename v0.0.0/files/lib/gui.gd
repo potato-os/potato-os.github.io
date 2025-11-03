@@ -78,7 +78,7 @@ class ColourRect extends Widget:
 
 	func _init(): super(); _rect = ColorRect.new(); _rect.set_anchors_and_offsets_preset(PRESET_FULL_RECT); add_child(_rect);
 	func colour(colour): _rect.color = colour if colour is Color else colour.unwrap(); return self;
-	func random(): _rect.color = Color(randf(), randf(), randf())
+	func random(): _rect.color = Color(randf(), randf(), randf()); return self;
 
 class ContainerWidget extends Widget:
 	var _container: Control
