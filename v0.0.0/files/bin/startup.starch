@@ -5,7 +5,7 @@ var clicked = false;
 var window = gui.Window();
 window.title("My Custom Window");
 
-var container = gui.FlexBox()
+var container = gui.FlexBox();
 container
 	~> .direction("vertical")
 	~> .gap(10)
