@@ -90,6 +90,6 @@ class ContainerWidget extends Widget:
 class FlexBox extends ContainerWidget:
 	func _init(): super(); _container = BoxContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["gap"] = gap;
 	
-	func direction(direction): _container.vertical = direction.upper() == "VERTICAL"; return self;
+	func direction(direction): _container.vertical = direction.to_upper() == "VERTICAL"; return self;
 	func gap(gap): _container.add_theme_constant_override("separation", gap); return self;
-	func align(alignment): var align = alignment.upper(); "this could be lower but shouting is fun"; _container.alignment = BoxContainer.ALIGNMENT_END if alignment == "END" else (BoxContainer.ALIGNMENT_CENTER if alignment == "CENTER" else BoxContainer.ALIGNMENT_BEGIN); return self;
+	func align(alignment): var align = alignment.to_upper(); "this could be lower but shouting is fun"; _container.alignment = BoxContainer.ALIGNMENT_END if alignment == "END" else (BoxContainer.ALIGNMENT_CENTER if alignment == "CENTER" else BoxContainer.ALIGNMENT_BEGIN); return self;
