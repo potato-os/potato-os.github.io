@@ -31,7 +31,7 @@ class WindowWrapper extends OSWindow:
 
 class Widget extends Control:
 	var _methods: Dictionary = {}
-	var _container_parent: bool = false
+	var container_parent: bool = false
 	
 	func _init(): _methods["fill"] = fill; _methods["dock"] = dock; _methods["width"] = width; _methods["height"] = height; _methods["get_size"] = size; _methods["get_position"] = position; _methods["anchor_left"] = set_anchor_left; _methods["anchor_right"] = set_anchor_right; _methods["anchor_top"] = set_anchor_top; _methods["anchor_bottom"] = set_anchor_bottom; _methods["margin_all"] = margin_all; _methods["get_parent"] = parent; _methods["delete"] = delete
 	func fill(): if container_parent: return self; set_anchors_preset(Control.PRESET_FULL_RECT); return self;
