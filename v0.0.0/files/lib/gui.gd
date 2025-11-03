@@ -7,6 +7,7 @@ func _init():
 	_classes["Widget"] = Widget
 	_classes["Text"] = Text
 	_classes["Button"] = ButtonWidget
+	_classes["ColourRect"] = ColourRect
 	_classes["Container"] = ContainerWidget
 	_classes["FlexBox"] = FlexBox
 
@@ -72,15 +73,20 @@ class ButtonWidget extends Widget:
 	func font(path: String): var font = FontFile.new(); font.load_dynamic_font("user://potatofs".path_join(name)); _button.add_theme_font_override("font", font); return self;
 	func on_click(callback): _button.pressed.connect(callback.bind([]))
 
+class ColourRect extends Widget:
+	var _rect: ColorRect
+
+	func _init(colour): super(); _rect = ColorRect.new(); _rect.set_anchors_and_offsets_preset(PRESET_FULL_RECT); add_child(_rect); _rect.color = colour if colour is Color else colour.unwrap();
+
 class ContainerWidget extends Widget:
 	var _container: Control
 
-	func _init(): super(); _container = Control.new(); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["add"] = add; _methods["remove"] = remove;
+	func _init(): super(); _container = Control.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["add"] = add; _methods["remove"] = remove;
 	func add(child: Node): _container.add_child(child); return self;
 	func remove(child: Node): _container.remove_child(child); return self;
 
 class FlexBox extends ContainerWidget:
-	func _init(): super(); _container = BoxContainer.new(); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["gap"] = gap;
+	func _init(): super(); _container = BoxContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["gap"] = gap;
 	
 	func direction(direction): _container.vertical = direction.upper() == "VERTICAL"; return self;
 	func gap(gap): _hbox.add_theme_constant_override("separation", gap); return self;
