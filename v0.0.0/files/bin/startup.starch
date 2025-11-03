@@ -13,6 +13,6 @@ container
 
 for _ in [0..5] {
 	container.add(
-		gui.ColorRect().random()
+		gui.ColourRect().random()
 	);
 }
