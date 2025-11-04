@@ -4,11 +4,12 @@ using Colour from graphics;
 var window = gui.Window();
 window.title("My Custom Window");
 
-var container = gui.FlexBox();
+var container = gui.Grid();
 container
 	~> .fill()
-	~> .direction("vertical")
-	~> .gap(10)
+	~> .columns(3)
+	~> .gap_h(10)
+	~> .gap_v(10)
 	~> window.add_content();
 
 for i in [0..5] {
