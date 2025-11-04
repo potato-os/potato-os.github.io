@@ -5,11 +5,12 @@ var window = gui.Window();
 window.title("My Custom Window");
 
 var scroll = gui.Scroll();
+scroll.fill();
 window.add_content(scroll);
 
 var container = gui.Grid();
 container
-	~> .fill()
+	~> .expand()
 	~> .columns(3)
 	~> .gap_h(10)
 	~> .gap_v(10)
