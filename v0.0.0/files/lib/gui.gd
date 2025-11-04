@@ -10,6 +10,7 @@ func _init():
 	_classes["ColourRect"] = ColourRect
 	_classes["Container"] = ContainerWidget
 	_classes["FlexBox"] = FlexBox
+	_classes["Grid"] = Grid
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
