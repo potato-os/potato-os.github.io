@@ -92,7 +92,7 @@ class ContainerWidget extends Widget:
 	var _container: Control
 
 	func _init(): super(); _container = Control.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["add"] = add; _methods["remove"] = remove;
-	func add(child: Node): _child.container_parent = true; _container.add_child(child); return self;
+	func add(child: Node): child.container_parent = true; _container.add_child(child); return self;
 	func remove(child: Node): _container.remove_child(child); return self;
 
 class FlexBox extends ContainerWidget:
