@@ -12,7 +12,7 @@ container
 	~> .gap_v(10)
 	~> window.add_content();
 
-for i in [0..5] {
+for i in [1..9] {
 	print("Adding to container!");
 	var new = gui.ColourRect().random().expand(true);
 	print(new);
