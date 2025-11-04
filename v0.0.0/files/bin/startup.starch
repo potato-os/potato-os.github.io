@@ -11,8 +11,8 @@ container
 	~> .gap(10)
 	~> window.add_content();
 
-for _ in [0..5] {
-	container.add(
-		gui.ColourRect().random()
-	);
+for i in [0..5] {
+	print("Adding to container!");
+	var new = gui.ColourRect().random();
+	container.add(new);
 }
