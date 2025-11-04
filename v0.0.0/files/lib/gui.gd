@@ -31,7 +31,6 @@ class WindowWrapper extends OSWindow:
 
 class Widget extends Control:
 	var _methods: Dictionary = {}
-	var container_parent: bool = false
 	
 	func _init(): _methods["fill"] = fill; _methods["dock"] = dock; _methods["width"] = width; _methods["height"] = height; _methods["get_size"] = size; _methods["get_position"] = position; _methods["anchor_left"] = set_anchor_left; _methods["anchor_right"] = set_anchor_right; _methods["anchor_top"] = set_anchor_top; _methods["anchor_bottom"] = set_anchor_bottom; _methods["margin_all"] = margin_all; _methods["get_parent"] = parent; _methods["delete"] = delete; _methods["add"] = (func(child): print("Calling ADD from lambda!"); Callable(self, "add").call(child.unwrap() if child is GDScriptInstanceWrapper else child); return self); _methods["remove"] = (func(child): print("Calling REMOVE from lambda!"); Callable(self, "remove").call(child.unwrap() if child is GDScriptInstanceWrapper else child); return self);
 	func fill(): set_anchors_preset(Control.PRESET_FULL_RECT); return self;
@@ -92,7 +91,7 @@ class ContainerWidget extends Widget:
 	var _container: Control
 
 	func _init(): super(); _container = Control.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
-	func add(child: Node): print("GUI: Setting %s as a container child!" % child); child.container_parent = true; print("Adding %s to %s as a child!" % [child, _container]); _container.add_child(child); print("Returning self!"); return self;
+	func add(child: Node): print("Adding %s to %s as a child!" % [child, _container]); _container.add_child(child); print("Returning self!"); return self;
 	func remove(child: Node): _container.remove_child(child); return self;
 
 class FlexBox extends ContainerWidget:
