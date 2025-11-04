@@ -46,7 +46,7 @@ class Widget extends Control:
 	func set_anchor_bottom(anchor: float): set_anchor(SIDE_BOTTOM, anchor); return self;
 
 	func margin_all(margin: float): set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_bottom, -margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, -margin); return self;
-	func expand(expand): if not container_parent: return self; var flag = SIZE_EXPAND_FILL if expand else SIZE_SHRINK_BEGIN; set_h_size_flags(flag); set_v_size_flags(flag); return self;
+	func expand(expand): var flag = SIZE_EXPAND_FILL if expand else SIZE_SHRINK_BEGIN; set_h_size_flags(flag); set_v_size_flags(flag); return self;
 
 	func add(child: Node): add_child(child); return self;
 	func remove(child: Node): remove_child(child); return self;
