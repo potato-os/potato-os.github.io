@@ -49,6 +49,8 @@ class Widget extends Control:
 	func margin_all(margin: float): if container_parent: return self; set_anchor_and_offset(SIDE_TOP, anchor_top, margin); set_anchor_and_offset(SIDE_LEFT, anchor_left, margin); set_anchor_and_offset(SIDE_BOTTOM, anchor_bottom, -margin); set_anchor_and_offset(SIDE_RIGHT, anchor_right, -margin); return self;
 	func expand(expand): if not container_parent: return self; var flag = SIZE_EXPAND_FILL if expand else SIZE_SHRINK_BEGIN; set_h_size_flags(flag); set_v_size_flags(flag); return self;
 
+	func add(child: Node): add_child(child); return self;
+	func remove(child: Node): remove_child(child); return self;
 	func parent(): return get_parent()
 	func delete(): queue_free()
 
@@ -56,6 +58,8 @@ class Text extends Widget:
 	var _label: RichTextLabel
 	
 	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; _label.text = "[font_size=][/font_size]"; add_child(_label);
+	func add(child: Node): _label.add_child(child); return self;
+	func remove(child: Node): _label.remove_child(child); return self;
 	func text(text: String): _label.text = "[font_size=][color=black]%s[/color][/font_size]" % text; return self;
 	func align(horizontally, vertically): _label.horizontal_alignment = horizontally; _label.vertical_alignment = vertically; return self;
 
@@ -64,6 +68,8 @@ class ButtonWidget extends Widget:
 	
 	func _init(): super(); _button = Button.new(); _button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER; _button.expand_icon = true; _button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; colour(Color.WHITE); add_child(_button); _button.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _methods["text"] = text; _methods["image"] = image; _methods["flat"] = flat; _methods["colour"] = colour; _methods["font_size"] = font_size; _methods["font"] = font; _methods["on_click"] = on_click;
 	func o(name, color): color = color if color is Color else color.unwrap(); _button.add_theme_color_override(name, color);
+	func add(child: Node): _button.add_child(child); return self;
+	func remove(child: Node): _button.remove_child(child); return self;
 
 	func text(text: String): _button.text = text; return self;
 	func image(image): image = image if image is Image else image.unwrap(); _button.icon = ImageTexture.create_from_image(image); return self;
@@ -77,6 +83,8 @@ class ColourRect extends Widget:
 	var _rect: ColorRect
 
 	func _init(): super(); _rect = ColorRect.new(); _rect.set_anchors_and_offsets_preset(PRESET_FULL_RECT); add_child(_rect);
+	func add(child: Node): _rect.add_child(child); return self;
+	func remove(child: Node): _rect.remove_child(child); return self;
 	func colour(colour): _rect.color = colour if colour is Color else colour.unwrap(); return self;
 	func random(): _rect.color = Color(randf(), randf(), randf()); return self;
 
@@ -84,11 +92,11 @@ class ContainerWidget extends Widget:
 	var _container: Control
 
 	func _init(): super(); _container = Control.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["add"] = add; _methods["remove"] = remove;
-	func add(child: Node): _container.add_child(child); return self;
+	func add(child: Node): _child.container_parent = true; _container.add_child(child); return self;
 	func remove(child: Node): _container.remove_child(child); return self;
 
 class FlexBox extends ContainerWidget:
-	func _init(): super(); _container = BoxContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["gap"] = gap;
+	func _init(): super(); remove_child(_container); _container.queue_free(); _container = BoxContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["gap"] = gap;
 	
 	func direction(direction): _container.vertical = direction.to_upper() == "VERTICAL"; return self;
 	func gap(gap): _container.add_theme_constant_override("separation", gap); return self;
