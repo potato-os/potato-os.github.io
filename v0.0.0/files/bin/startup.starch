@@ -14,7 +14,7 @@ container
 
 for i in [0..5] {
 	print("Adding to container!");
-	var new = gui.ColourRect().random().expand();
+	var new = gui.ColourRect().random().expand(true);
 	print(new);
 	container.add(new);
 }
