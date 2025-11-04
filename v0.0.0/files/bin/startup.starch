@@ -4,12 +4,16 @@ using Colour from graphics;
 var window = gui.Window();
 window.title("My Custom Window");
 
-var grid = gui.Grid()
-	~> .columns(3)
-	~> .gap_h(10)
-	~> .gap_v(10)
-	~> .fill();
+var container = gui.FlexBox();
+container
+	~> .fill()
+	~> .direction("vertical")
+	~> .gap(10)
+	~> window.add_content();
 
-for i in [0..9] {
-	grid.add(gui.ColourRect().random().expand());
+for i in [0..5] {
+	print("Adding to container!");
+	var new = gui.ColourRect().random().expand(true);
+	print(new);
+	container.add(new);
 }
