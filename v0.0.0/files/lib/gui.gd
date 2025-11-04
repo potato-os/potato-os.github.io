@@ -11,6 +11,7 @@ func _init():
 	_classes["Container"] = ContainerWidget
 	_classes["FlexBox"] = FlexBox
 	_classes["Grid"] = Grid
+	_classes["Scroll"] = Scroll
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
