@@ -113,4 +113,10 @@ class Grid extends ContainerWidget:
 class Scroll extends ContainerWidget:
 	func _init(): super(); remove_child(_container); _container.queue_free(); _container = ScrollContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["scrollbars"] = scrollbars; _methods["position"] = scroll;
 	func scroll(h=null, v=null): _container.scroll_horizontal = h if h else _container.scroll_horizontal; _container.scroll_vertical = v if v else _container.scroll_vertical; return ({"x": _container.scroll_horizontal, "y": _container.scroll_vertical} if not h and not v else self);
-	func scrollbars(h=null, v=null): var y = v.to_upper(); var v_mode = (ScrollContainer.SCROLL_MODE_DISABLED if y == "DISABLED" else (ScrollContainer.SCROLL_MODE_SHOW_ALWAYS if y == "ALWAYS" else (ScrollContainer.SCROLL_MODE_SHOW_NEVER if y == "NEVER" else ScrollContainer.SCROLL_MODE_AUTO))); var x = h.to_upper(); var h_mode = (ScrollContainer.SCROLL_MODE_DISABLED if x == "DISABLED" else (ScrollContainer.SCROLL_MODE_SHOW_ALWAYS if x == "ALWAYS" else (ScrollContainer.SCROLL_MODE_SHOW_NEVER if x == "NEVER" else ScrollContainer.SCROLL_MODE_AUTO))); _container.horizontal_scroll_mode = h_mode if h else _container.horizontal_scroll_mode; _container.vertical_scroll_mode = v_mode if v else _container.vertical_scroll_mode; return ({"x": _container.horizontal_scroll_mode, "y": _container.vertical_scroll_mode} if not h and not v else self)
+	func scrollbars(h=null, v=null): var h_mode = _parse_scroll_mode(h) if h else _container.horizontal_scroll_mode; var v_mode = _parse_scroll_mode(v) if v else _container.vertical_scroll_mode; _container.horizontal_scroll_mode = h_mode; _container.vertical_scroll_mode = v_mode; return {"x": h_mode, "y": v_mode} if not h and not v else self;
+	func _parse_scroll_mode(mode: String) -> int:
+		match mode.to_upper():
+			"DISABLED": return ScrollContainer.SCROLL_MODE_DISABLED
+			"ALWAYS": return ScrollContainer.SCROLL_MODE_SHOW_ALWAYS
+			"NEVER": return ScrollContainer.SCROLL_MODE_SHOW_NEVER
+			_: return ScrollContainer.SCROLL_MODE_AUTO
