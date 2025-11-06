@@ -111,7 +111,7 @@ class Grid extends ContainerWidget:
 	func gap_v(gap): _container.add_theme_constant_override("v_separation", gap); return self;
 
 class Scroll extends ContainerWidget:
-	func _init(): super(); remove_child(_container); _container.queue_free(); _container = ScrollContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["scrollbars"] = scrollbars; _methods["position"] = scroll;
+	func _init(): super(); _container.queue_free(); _container = ScrollContainer.new(); add_child(_container); _container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["scrollbars"] = scrollbars; _methods["position"] = scroll;
 	func scroll(h=null, v=null): _container.scroll_horizontal = h if h else _container.scroll_horizontal; _container.scroll_vertical = v if v else _container.scroll_vertical; return ({"x": _container.scroll_horizontal, "y": _container.scroll_vertical} if not h and not v else self);
 	func scrollbars(h=null, v=null): var h_mode = _parse_scroll_mode(h) if h else _container.horizontal_scroll_mode; var v_mode = _parse_scroll_mode(v) if v else _container.vertical_scroll_mode; _container.horizontal_scroll_mode = h_mode; _container.vertical_scroll_mode = v_mode; return {"x": h_mode, "y": v_mode} if not h and not v else self;
 	func _parse_scroll_mode(mode: String) -> int:
