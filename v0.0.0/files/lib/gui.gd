@@ -12,6 +12,7 @@ func _init():
 	_classes["FlexBox"] = FlexBox
 	_classes["Grid"] = Grid
 	_classes["Scroll"] = Scroll
+	_classes["Input"] = TextInput
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
@@ -121,10 +122,10 @@ class Scroll extends ContainerWidget:
 			"NEVER": return ScrollContainer.SCROLL_MODE_SHOW_NEVER
 			_: return ScrollContainer.SCROLL_MODE_AUTO
 
-class Input extends Widget:
+class TextInput extends Widget:
 	var _edit: LineEdit
 
-	func _init(): super(); _edit = LineEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
+	func _init(): super(); _edit = LineEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["secret"] = secret; _methods["editable"] = editable; _methods["max_length"] = max_length; _methods["change"] = change; _methods["submit"] = submit; 
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder = text; return self;
 	func secret(character): _edit.secret_character = character; _edit.secret = character as bool; return self;
