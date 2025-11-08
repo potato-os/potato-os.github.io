@@ -12,4 +12,5 @@ var text = gui.Input();
 text
 	~> .fill()
 	~> .secret("*")
+	~> .change(on_change)
 	~> window.add_content();
