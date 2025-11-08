@@ -5,7 +5,7 @@ var window = gui.Window();
 window.title("My Custom Window");
 
 function on_change(text) {
-	print(text)
+	print(text);
 }
 
 var text = gui.Input();
