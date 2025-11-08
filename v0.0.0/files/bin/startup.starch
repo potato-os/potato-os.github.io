@@ -4,14 +4,12 @@ using Colour from graphics;
 var window = gui.Window();
 window.title("My Custom Window");
 
-var scroll = gui.Scroll();
-scroll
-	~> .fill()
-	~> .scrollbars("disabled", "auto")
-	~> window.add_content();
+function on_change(text) {
+	print(text)
+}
 
-scroll.add(
-	gui.Text().text(
-		"[font_size=100]Hello World!\nI don't know if newlines work but if they do that's good, huh? Either way it's cool, I hope.. Maybe it will not be.... But either way this paragraph might possibly work, or maybe not no one knows, but really this serves as a test more than anything else."
-	)
-);
+var text = gui.Input();
+text
+	~> .fill()
+	~> .secret("*")
+	~> window.add_content();
