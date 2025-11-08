@@ -120,3 +120,15 @@ class Scroll extends ContainerWidget:
 			"ALWAYS": return ScrollContainer.SCROLL_MODE_SHOW_ALWAYS
 			"NEVER": return ScrollContainer.SCROLL_MODE_SHOW_NEVER
 			_: return ScrollContainer.SCROLL_MODE_AUTO
+
+class Input extends Widget:
+	var _edit: LineEdit
+
+	func _init(): super(); _edit = LineEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
+	func text(text): _edit.text = text; return self;
+	func placeholder(text): _edit.placeholder = text; return self;
+	func secret(character): _edit.secret_character = character; _edit.secret = character as bool; return self;
+	func editable(editable): _edit.editable = editable; return self;
+	func max_length(length): _edit.max_length = length; return self;
+	func change(callback): _edit.text_changed.connect(callback); return self;
+	func submit(callback): _edit.text_submitted.connect(callback); return self;
