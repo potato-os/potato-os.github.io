@@ -56,7 +56,7 @@ class Widget extends Control:
 	func parent(): return get_parent()
 	func delete(): queue_free()
 
-	func _callback(callback, ...args): callback.call(args)
+	func _callback(...args, callback): callback.call(args)
 
 class Text extends Widget:
 	var _label: RichTextLabel
