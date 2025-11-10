@@ -139,7 +139,7 @@ class TextInput extends Widget:
 class Editor extends Widget:
 	var _edit: TextEdit
 
-	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
+	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _edit.wrap_mode = TextEdit.LINEWRAPPINGBOUNDARY;
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder_text = text; return self;
 	func editable(editable): _edit.editable = editable; return self;
