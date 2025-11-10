@@ -142,6 +142,6 @@ class Editor extends Widget:
 	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder_text = text; return self;
-	func editable(editaqble): _edit.editable = editable; return self;
+	func editable(editable): _edit.editable = editable; return self;
 	func change(callback): _edit.text_changed.connect(func(new_text): callback.call([new_text])); return self;
 	func on_set(callback): _edit.text_set.connect(func(new_text): callback.call([new_text])); return self;
