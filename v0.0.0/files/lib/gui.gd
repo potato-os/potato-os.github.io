@@ -13,6 +13,7 @@ func _init():
 	_classes["Grid"] = Grid
 	_classes["Scroll"] = Scroll
 	_classes["Input"] = TextInput
+	_classes["Editor"] = Editor
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
@@ -127,9 +128,20 @@ class TextInput extends Widget:
 
 	func _init(): super(); _edit = LineEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["secret"] = secret; _methods["editable"] = editable; _methods["max_length"] = max_length; _methods["change"] = change; _methods["submit"] = submit; 
 	func text(text): _edit.text = text; return self;
-	func placeholder(text): _edit.placeholder = text; return self;
+	func placeholder(text): _edit.placeholder_text = text; return self;
 	func secret(character): _edit.secret_character = character; _edit.secret = character != ""; return self;
 	func editable(editable): _edit.editable = editable; return self;
 	func max_length(length): _edit.max_length = length; return self;
 	func change(callback): _edit.text_changed.connect(func(new_text): callback.call([new_text])); return self;
 	func submit(callback): _edit.text_submitted.connect(func(new_text): callback.call([new_text])); return self;
+	func get_text(): return _edit.text;
+
+class Editor extends Widget:
+	var _edit: TextEdit
+
+	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
+	func text(text): _edit.text = text; return self;
+	func placeholder(text): _edit.placeholder_text = text; return self;
+	func editable(editaqble): _edit.editable = editable; return self;
+	func change(callback): _edit.text_changed.connect(func(new_text): callback.call([new_text])); return self;
+	func on_set(callback): _edit.text_set.connect(func(new_text): callback.call([new_text])); return self;
