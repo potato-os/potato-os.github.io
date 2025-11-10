@@ -126,7 +126,7 @@ class Scroll extends ContainerWidget:
 class TextInput extends Widget:
 	var _edit: LineEdit
 
-	func _init(): super(); _edit = LineEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["secret"] = secret; _methods["editable"] = editable; _methods["max_length"] = max_length; _methods["change"] = change; _methods["submit"] = submit; 
+	func _init(): super(); _edit = LineEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["secret"] = secret; _methods["editable"] = editable; _methods["max_length"] = max_length; _methods["change"] = change; _methods["submit"] = submit; _methods["get_text"] = get_text; 
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder_text = text; return self;
 	func secret(character): _edit.secret_character = character; _edit.secret = character != ""; return self;
@@ -139,17 +139,27 @@ class TextInput extends Widget:
 class Editor extends Widget:
 	var _edit: TextEdit
 
-	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY;
+	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY; _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["editable"] = editable; _methods["wrap"] = wrap; _methods["change"] = change; _methods["get_text"] = get_text;
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder_text = text; return self;
 	func editable(editable): _edit.editable = editable; return self;
 	func wrap(mode): _edit.autowrap_mode = _get_wrap_mode(mode); return self;
 	func change(callback): _edit.text_changed.connect(func(): callback.call([_edit.text])); return self;
+	func get_text(): return _edit.text;
 
 	func _get_wrap_mode(mode):
 		match mode.to_lower():
-			"off": return TextServer.AUTOWRAP_OFF
 			"arbitrary": return TextServer.AUTOWRAP_ARBITRARY
 			"word": return TextServer.AUTOWRAP_WORD
 			"word_smart": return TextServer.AUTOWRAP_WORD_SMART
 			_: return TextServer.AUTOWRAP_OFF
+
+class Image extends Widget:
+	var _rect: TextureRect
+
+	func _init(): super(); _rect = TextureRect.new(); add_child(_rect); _rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
+	func source(image): image = image if image is Image else image.unwrap(); _rect.texture = ImageTexture.create_from_image(image); return self;
+	func scale(): _rect.stretch_mode = TextureRect.STRETCH_SCALE; return self;
+	func tile(): _rect.stretch_mode = TextureRect.STRETCH_TILE; return self;
+	func actual_size(): _rect.stretch_mode = TextureRect.STRETCH_KEEP; return self;
+	func keep_aspect(): _rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT; return self;
