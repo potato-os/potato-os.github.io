@@ -14,6 +14,7 @@ func _init():
 	_classes["Scroll"] = Scroll
 	_classes["Input"] = TextInput
 	_classes["Editor"] = Editor
+	_classes["Image"] = ImageRect
 
 class WindowWrapper extends OSWindow:
 	var _methods: Dictionary = {"add_content": _add_content, "title": title}
@@ -152,7 +153,7 @@ class Editor extends Widget:
 	func wrap_word_smart(): _edit.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; return self;
 	func wrap_off(): _edit.autowrap_mode = TextServer.AUTOWRAP_OFF; return self;
 
-class Image extends Widget:
+class ImageRect extends Widget:
 	var _rect: TextureRect
 
 	func _init(): super(); _rect = TextureRect.new(); add_child(_rect); _rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["source"] = source; _methods["scale"] = scale; _methods["tile"] = tile; _methods["actual_size"] = actual_size; _methods["keep_aspect"] = keep_aspect;
