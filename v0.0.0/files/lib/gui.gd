@@ -148,7 +148,7 @@ class Editor extends Widget:
 	func on_set(callback): _edit.text_set.connect(func(new_text): callback.call([new_text])); return self;
 
 	func _get_wrap_mode(mode):
-		match mode.lower():
+		match mode.to_lower():
 			"off": return TextServer.AUTOWRAP_OFF
 			"arbitrary": return TextServer.AUTOWRAP_ARBITRARY
 			"word": return TextServer.AUTOWRAP_WORD
