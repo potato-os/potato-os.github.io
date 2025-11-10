@@ -13,4 +13,5 @@ text
 	~> .fill()
 	~> .placeholder("Write an essay...")
 	~> .change(on_change)
+	~> .wrap("word_smart")
 	~> window.add_content();
