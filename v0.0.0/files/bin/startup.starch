@@ -8,9 +8,9 @@ function on_change(text) {
 	print(text);
 }
 
-var text = gui.Input();
+var text = gui.Editor();
 text
 	~> .fill()
-	~> .secret("*")
+	~> .placeholder("Write an essay...")
 	~> .change(on_change)
 	~> window.add_content();
