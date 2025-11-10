@@ -143,5 +143,14 @@ class Editor extends Widget:
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder_text = text; return self;
 	func editable(editable): _edit.editable = editable; return self;
+	func wrap(mode): _edit.autowrap_mode = _get_wrap_mode(mode); return self;
 	func change(callback): _edit.text_changed.connect(func(new_text): callback.call([new_text])); return self;
 	func on_set(callback): _edit.text_set.connect(func(new_text): callback.call([new_text])); return self;
+
+	func _get_wrap_mode(mode):
+		match mode.lower():
+			"off": return TextServer.AUTOWRAP_OFF
+			"arbitrary": return TextServer.AUTOWRAP_ARBITRARY
+			"word": return TextServer.AUTOWRAP_WORD
+			"word_smart": return TextServer.AUTOWRAP_WORD_SMART
+			_: return TextServer.AUTOWRAP_OFF
