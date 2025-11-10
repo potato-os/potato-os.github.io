@@ -139,25 +139,22 @@ class TextInput extends Widget:
 class Editor extends Widget:
 	var _edit: TextEdit
 
-	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY; _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["editable"] = editable; _methods["wrap"] = wrap; _methods["change"] = change; _methods["get_text"] = get_text;
+	func _init(): super(); _edit = TextEdit.new(); add_child(_edit); _edit.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY; _methods["text"] = text; _methods["placeholder"] = placeholder; _methods["editable"] = editable; _methods["change"] = change; _methods["get_text"] = get_text; _methods["wrap_arbitrary"] = wrap_arbitrary; _methods["wrap_word"] = wrap_word; _methods["wrap_word_smart"] = wrap_word_smart; _methods["wrap_off"] = wrap_off;
 	func text(text): _edit.text = text; return self;
 	func placeholder(text): _edit.placeholder_text = text; return self;
 	func editable(editable): _edit.editable = editable; return self;
-	func wrap(mode): _edit.autowrap_mode = _get_wrap_mode(mode); return self;
 	func change(callback): _edit.text_changed.connect(func(): callback.call([_edit.text])); return self;
 	func get_text(): return _edit.text;
 
-	func _get_wrap_mode(mode):
-		match mode.to_lower():
-			"arbitrary": return TextServer.AUTOWRAP_ARBITRARY
-			"word": return TextServer.AUTOWRAP_WORD
-			"word_smart": return TextServer.AUTOWRAP_WORD_SMART
-			_: return TextServer.AUTOWRAP_OFF
+	func wrap_arbitrary(): _edit.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY; return self;
+	func wrap_word(): _edit.autowrap_mode = TextServer.AUTOWRAP_WORD; return self;
+	func wrap_word_smart(): _edit.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART; return self;
+	func wrap_off(): _edit.autowrap_mode = TextServer.AUTOWRAP_OFF; return self;
 
 class Image extends Widget:
 	var _rect: TextureRect
 
-	func _init(): super(); _rect = TextureRect.new(); add_child(_rect); _rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);
+	func _init(): super(); _rect = TextureRect.new(); add_child(_rect); _rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); _methods["source"] = source; _methods["scale"] = scale; _methods["tile"] = tile; _methods["actual_size"] = actual_size; _methods["keep_aspect"] = keep_aspect;
 	func source(image): image = image if image is Image else image.unwrap(); _rect.texture = ImageTexture.create_from_image(image); return self;
 	func scale(): _rect.stretch_mode = TextureRect.STRETCH_SCALE; return self;
 	func tile(): _rect.stretch_mode = TextureRect.STRETCH_TILE; return self;
