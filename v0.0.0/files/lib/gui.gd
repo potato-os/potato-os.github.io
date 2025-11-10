@@ -133,5 +133,5 @@ class TextInput extends Widget:
 	func secret(character): _edit.secret_character = character; _edit.secret = character != ""; return self;
 	func editable(editable): _edit.editable = editable; return self;
 	func max_length(length): _edit.max_length = length; return self;
-	func change(callback): _edit.text_changed.connect(callback); return self;
+	func change(callback): _edit.text_changed.connect(_callback.bind(callback)); return self;
 	func submit(callback): _edit.text_submitted.connect(_callback.bind(callback)); return self;
