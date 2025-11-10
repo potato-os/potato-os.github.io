@@ -56,8 +56,6 @@ class Widget extends Control:
 	func parent(): return get_parent()
 	func delete(): queue_free()
 
-	func _callback(...args, callback): callback.call(args)
-
 class Text extends Widget:
 	var _label: RichTextLabel
 	
@@ -81,7 +79,7 @@ class ButtonWidget extends Widget:
 	func colour(colour): colour = colour if colour is Color else colour.unwrap(); o("font_color", colour); o("font_focus_color", colour); o("font_pressed_color", colour); o("font_hover_color", colour); o("font_hover_pressed_color", colour); o("font_disabled_color", colour); return self;
 	func font_size(size: int): _button.add_theme_font_size_override("font_size", size); return self;
 	func font(path: String): var font = FontFile.new(); font.load_dynamic_font("user://potatofs".path_join(name)); _button.add_theme_font_override("font", font); return self;
-	func on_click(callback): _button.pressed.connect(_callback.bind(callback))
+	func on_click(callback): _button.pressed.connect(callback.bind([]))
 
 class ColourRect extends Widget:
 	var _rect: ColorRect
@@ -133,5 +131,5 @@ class TextInput extends Widget:
 	func secret(character): _edit.secret_character = character; _edit.secret = character != ""; return self;
 	func editable(editable): _edit.editable = editable; return self;
 	func max_length(length): _edit.max_length = length; return self;
-	func change(callback): _edit.text_changed.connect(_callback.bind(callback)); return self;
-	func submit(callback): _edit.text_submitted.connect(_callback.bind(callback)); return self;
+	func change(callback): _edit.text_changed.connect(func(new_text): callback.call([new_text])); return self;
+	func submit(callback): _edit.text_submitted.connect(func(new_text): callback.call([new_text])); return self;
