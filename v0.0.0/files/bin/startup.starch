@@ -2,16 +2,55 @@ using gui;
 using Colour from graphics;
 
 var window = gui.Window();
-window.title("My Custom Window");
+window.title("Task Manager");
 
-function on_change(text) {
-	print(text);
+// Main container
+var layout = gui.FlexBox();
+layout
+		~> .direction("vertical")
+		~> .gap(10)
+		~> .fill()
+		~> window.add_content();
+
+// Title
+gui.Text()
+		~> .text("[b][color=blue]Welcome to Task Manager[/color][/b]")
+		~> .align(1, 0)
+		~> .height(40)
+		~> layout.add();
+
+// Input section
+var input_box = gui.FlexBox();
+input_box
+		~> .direction("horizontal")
+		~> .gap(5)
+		~> .height(40);
+
+var task_input = gui.Input();
+task_input
+		~> .placeholder("Enter task name...")
+		~> .expand(true);
+
+gui.Button()
+		~> .text("Add Task")
+		~> .on_click(add_task)
+		~> .width(100)
+		~> input_box.add();
+
+task_input ~> input_box.add();
+input_box ~> layout.add();
+
+// Task list
+var task_list = gui.Scroll();
+task_list
+		~> .expand(true)
+		~> .scrollbars("never", "auto")
+		~> layout.add();
+
+function add_task() {
+		var text = task_input.get_text();
+		if text.length() > 0 {
+				print("Added task: " ~ text);
+				task_input.text("");
+		}
 }
-
-var text = gui.Editor();
-text
-	~> .fill()
-	~> .placeholder("Write an essay...")
-	~> .change(on_change)
-	~> .wrap("word_smart")
-	~> window.add_content();
