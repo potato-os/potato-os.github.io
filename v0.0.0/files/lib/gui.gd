@@ -61,11 +61,12 @@ class Widget extends Control:
 class Text extends Widget:
 	var _label: RichTextLabel
 	
-	func _init(): super(); _methods["text"] = text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; _label.text = "[font_size=][/font_size]"; add_child(_label);
+	func _init(): super(); _methods["text"] = text; _methods["align"] = align; _methods["get_text"] = get_text; _label = RichTextLabel.new(); _label.set_anchors_and_offsets_preset(PRESET_FULL_RECT); _label.bbcode_enabled = true; _label.text = "[font_size=][/font_size]"; add_child(_label);
 	func add(child: Node): _label.add_child(child); return self;
 	func remove(child: Node): _label.remove_child(child); return self;
 	func text(text: String): _label.text = "[font_size=][color=black]%s[/color][/font_size]" % text; return self;
 	func align(horizontally, vertically): _label.horizontal_alignment = horizontally; _label.vertical_alignment = vertically; return self;
+	func get_text(): var regex = RegEx.new(); regex.compile("\\[.*?\\]"); return regex.sub(_label.text, "", true);
 
 class ButtonWidget extends Widget:
 	var _button: Button
