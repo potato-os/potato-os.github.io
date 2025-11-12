@@ -4,13 +4,13 @@ var window = gui.Window();
 window.title("Calculator");
 
 // Main container
-var layout = gui.FlexBox();
+var layout = gui.FlexBox()
     ~> .fill()
     ~> .direction("vertical");
 window.add_content(layout);
 
 // Display
-var display = gui.Text();
+var display = gui.Text()
     ~> .expand(true)
     ~> .text("0");
 layout.add(display);
