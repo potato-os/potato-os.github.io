@@ -21,9 +21,13 @@ var buttons = gui.Grid()
 	~> .columns(4);
 layout.add(buttons);
 
-for i in [1..20] {
-	var button = gui.Button()
+function calc_button(label, callback) -> gui.Button {
+	return gui.Button()
 		~> .expand(true)
-		~> .text("0");
-	buttons.add(button);
+		~> .text(label)
+		~> .on_click(callback);
 }
+
+function clear() { display.text(""); }
+
+buttons.add(calc_button("AC", clear))
