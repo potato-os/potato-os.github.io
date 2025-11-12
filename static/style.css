@@ -1,0 +1,8 @@
+section.hero {
+    background: var(--background-primary);
+    display: flex;
+}
+
+.intro {
+    flex: 1;
+}
