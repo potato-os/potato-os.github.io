@@ -1,6 +1,7 @@
+class_name ISwearToGodIfThisComesUpInMyDebugPrintIWillKillYou
+
 var _methods = {}
 var _classes = {}
-var graphics = load("user://potatofs/system/lib/graphics.gd")
 
 func _init():
 	_classes["Window"] = WindowWrapper
