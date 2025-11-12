@@ -11,7 +11,7 @@ window.add_content(layout);
 
 // Display
 var display = gui.Text()
-//    ~> .expand(true)
+	~> .height(100)
 	~> .text("0");
 layout.add(display);
 
