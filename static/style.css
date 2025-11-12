@@ -5,6 +5,9 @@ section.hero {
 
 .hero .intro {
 	flex: 1;
+	padding: 20px;
+	font-size: 2rem;
+	font-family: "Poppins", sans-serif;
 }
 
 .hero .showcase {
