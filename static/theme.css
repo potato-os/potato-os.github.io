@@ -32,3 +32,11 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 }
+
+button {
+	border: none;
+	border-radius: 8px;
+	background: var(--accent-secondary);
+	cursor: pointer;
+	padding: 8px;
+}

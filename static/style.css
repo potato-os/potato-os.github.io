@@ -1,6 +1,7 @@
 section.hero {
 	background: var(--accent-primary);
 	display: flex;
+	color: black;
 }
 
 .hero .intro {
