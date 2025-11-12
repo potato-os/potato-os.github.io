@@ -1,8 +1,18 @@
 section.hero {
-    background: var(--background-primary);
-    display: flex;
+	background: var(--accent-primary);
+	display: flex;
 }
 
-.intro {
-    flex: 1;
+.hero .intro {
+	flex: 1;
+}
+
+.hero .showcase {
+	flex: 1;
+}
+
+.showcase img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
 }
