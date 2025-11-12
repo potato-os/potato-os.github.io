@@ -18,7 +18,7 @@ layout.add(display);
 // Buttons
 var buttons = gui.Grid()
     ~> .expand(true)
-    ~> columns(4);
+    ~> .columns(4);
 layout.add(buttons);
 
 for i in [1..10] {
