@@ -1,0 +1,25 @@
+:root {
+	--background-primary: #1a1410;
+	--background-secondary: #2d231c;
+	--background-tertiary: #3d302a;
+	--background-quaternary: #4a3d35;
+
+	--accent-primary: #d4834f;
+	--accent-secondary: #b86f3f;
+	--accent-tertiary: #8b5a33;
+	--accent-quaternary: #e8a76a;
+
+	--text-primary: #f5e6d3;
+	--text-secondary: #d4c4b0;
+	--text-tertiary: #a89680;
+
+	--border: #4a3d35;
+	--shadow: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-primary);
+    margin: 0;
+}
