@@ -5,25 +5,25 @@ window.title("Calculator");
 
 // Main container
 var layout = gui.FlexBox()
-    ~> .fill()
-    ~> .direction("vertical");
+	~> .fill()
+	~> .direction("vertical");
 window.add_content(layout);
 
 // Display
 var display = gui.Text()
-    ~> .expand(true)
-    ~> .text("0");
+//    ~> .expand(true)
+	~> .text("0");
 layout.add(display);
 
 // Buttons
 var buttons = gui.Grid()
-    ~> .expand(true)
-    ~> .columns(4);
+	~> .expand(true)
+	~> .columns(4);
 layout.add(buttons);
 
-for i in [1..10] {
-    var button = gui.Button()
-        ~> .expand(true)
-        ~> .text("0");
-    buttons.add(button);
+for i in [1..20] {
+	var button = gui.Button()
+		~> .expand(true)
+		~> .text("0");
+	buttons.add(button);
 }
