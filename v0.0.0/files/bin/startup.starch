@@ -21,7 +21,7 @@ var buttons = gui.Grid()
 	~> .columns(4);
 layout.add(buttons);
 
-function calc_button(label, callback) -> gui.Button {
+function calc_button(label: str, callback: function) -> gui.Button {
 	return gui.Button()
 		~> .expand(true)
 		~> .text(label)
@@ -30,4 +30,4 @@ function calc_button(label, callback) -> gui.Button {
 
 function clear() { display.text(""); }
 
-buttons.add(calc_button("AC", clear))
+buttons.add(calc_button("AC", clear));
