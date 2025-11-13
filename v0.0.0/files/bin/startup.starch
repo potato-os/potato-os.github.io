@@ -32,4 +32,4 @@ function clear() { display.text(""); }
 function lbrace() { display.text(display.get_text() ~ "(") }
 
 buttons.add(calc_button("AC", clear));
-buttons.add(calc_button("(", lbrace))
+buttons.add(calc_button("(", lbrace));
