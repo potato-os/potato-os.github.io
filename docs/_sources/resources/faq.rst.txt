@@ -1,0 +1,31 @@
+Frequently Asked Questions
+==========================
+
+**Q:** What is a "parasite" OS?
+
+**A:** PotatoOS is a "parasite" OS. This means it runs as a single, fullscreen application on a "host" OS like Windows, Linux or MacOS. The model allows it to use the host's stability while providing its own desktop environment and file system.
+
+
+
+**Q:** Is PotatoOS a Virtual Machine?
+
+**A:** No. PotatoOS does not virtualise hardware or run on a seperate kernel like a VM. It's a high-level application layer that relies on the host OS's functionality for low-level tasks.
+
+
+
+**Q:** Why use STARCH instead of Python or C?
+
+**A:** Because STARCH is designed to interact directly with the PotatoOS Native APIs. This means that it's the fastest and most integrated development choice. However, using another language to develop applications is perfectly acceptable.
+
+
+
+**Q:** Can I use my host OS applications from within PotatoOS?
+
+**A:** No. The PotatoFS system makes sure the host OS is segregated from PotatoOS. However, a compatibility layer is intended to be built in the future, allowing any Windows or Linux program to run natively on PotatoOS.
+
+
+
+**Q:** How do I exit PotatoOS?
+
+**A:** PotatoOS has a shortcut to exit: **Meta + Q**. On Windows and Linux, the Meta key represents the Windows key (sometimes called "meta" or "super" on Linux). On macOS, this represents the Command key. This shortcut will not save your data, and a dialogue will appear asking you to confirm that you want to close PotatoOS.
+
