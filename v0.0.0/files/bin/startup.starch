@@ -29,5 +29,7 @@ function calc_button(label: str, callback: function) -> gui.Button {
 }
 
 function clear() { display.text(""); }
+function lbrace() { display.text(display.get_text() ~ "(") }
 
 buttons.add(calc_button("AC", clear));
+buttons.add(calc_button("(", lbrace))
