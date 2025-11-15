@@ -5,4 +5,6 @@ function print_text(text¹, text², text³) {
 	print(text¹ ~ text² ~ text³);
 }
 
-functools.bind(print_text, "hello", ", ")("world!");
+var new = functools.bind(print_text, "hello", ", ");
+print(new);
+new("world!");
