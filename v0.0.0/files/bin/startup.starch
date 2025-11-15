@@ -1,6 +1,7 @@
 using functools;
 
 function print_text(text¹, text², text³) {
+	print("IS ANYTHING FRICKING HAPPENING OR WHAT");
 	print(text¹ ~ text² ~ text³);
 }
 
