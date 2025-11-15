@@ -4,4 +4,4 @@ function print_text(text, text2, text3) {
 	print(text ~ text2 ~ text3);
 }
 
-functools.bind(print_text, "hello", ", ")("world!")
+functools.bind(print_text, "hello", ", ")("world!");
