@@ -1,6 +1,6 @@
 using functools;
 
-function print_text(text, text2, text3) {
+function print_text(text¹, text², text³) {
 	print(text ~ text2 ~ text3);
 }
 
