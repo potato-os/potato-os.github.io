@@ -1,7 +1,7 @@
 using functools;
 
 function print_text(text¹, text², text³) {
-	print(text ~ text2 ~ text3);
+	print(text¹ ~ text² ~ text³);
 }
 
 functools.bind(print_text, "hello", ", ")("world!");
