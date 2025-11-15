@@ -32,6 +32,9 @@
 		"/system/lib/graphics.gd": {
 			"url": "/files/lib/graphics.gd"
 		},
+		"/system/lib/functools.gd": {
+			"url": "/files/lib/functools.gd"
+		},
 		"/system/bin/startup.starch": {
 			"url": "/files/bin/startup.starch"
 		},
